@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+html,body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header{
+    text-align: center;
+}
+.container{
+    display: grid;
+    grid-template-rows: 50px;
+    grid-auto-rows: 50px;
+    max-width: 90vw;
+    gap: 3px;
+}
+.sixteen{
+    grid-template-columns: repeat(4,50px);
+}
+.thirtySix{
+    grid-template-columns: repeat(6,50px);
+}
+.sixtyFour{
+    grid-template-columns: repeat(8,50px);
+}
+.oneHundred{
+    grid-template-columns: repeat(10,50px);
+}
+.div{
+    border:2px black solid;
+}
