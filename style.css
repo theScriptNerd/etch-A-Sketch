@@ -1,23 +1,109 @@
-* {
-    box-sizing: border-box;
+:root{
+    --primary-dark: rgb(70, 79, 79);
+    --primary-light: rgb(203, 201, 211);
+    --secondary-light: rgb(255, 255, 255);
 }
-html,body{
+@font-face {
+    font-family: 'Roboto';
+    src: url(./Roboto/Roboto-Regular.ttf);
+}
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+html{
+    position: relative;
+    min-height: 100%;
+}
 body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--primary-dark);
+    background-color: var(--primary-light);
 }
 .header{
     text-align: center;
+    font-size: 4em;
+}
+.main{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    gap: 100px;
+}
+.settings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 200px;
+}
+button, input{
+    width: 100%;
+}
+.range-div{
+    font-size: 25px;
+}
+.grid-size{
+    margin-bottom: 10px;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+.grid-size::-webkit-slider-runnable-track{
+    height: 10px;
+    border: 1px solid var(--primary-dark);
+    border-radius: 25px;
+}
+.grid-size::-webkit-slider-thumb{
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: var(--primary-dark);
+    margin-top: -6px;
+}
+.grid-buttons{
+    height: 40px;
+    border-radius: 7px;
+    cursor: pointer;
+    border-color: var(--primary-dark);
+    margin: 5px;
 }
 .container{
     display: grid;
-    max-width: 90vw;
-    gap: 3px;
+    width: 600px;
+    height: 600px;
+    border: 2px solid var(--primary-dark);
+    background-color: var(--secondary-light);
 }
 .div{
-    border:2px black solid;
+    border: 1px solid var(--primary-dark);
+}
+.div:hover,
+.div.hover-stick{
+    background-color: var(--primary-dark);
+}
+.footer{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid var(--primary-dark);
+    gap: 3px;
+    margin-top: 10px;
+}
+.footer-ref{
+    font-weight: 700;
+    font-size: 1.5em;
+}
+span{
+    font-size: 1.5em;
 }

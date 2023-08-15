@@ -7,8 +7,20 @@
     <script src="script.js" defer></script>
     <title>Etch A Sketch</title>
 </head>
-<body>
-    <h1 class="header">Etch-A-Sketch</h1>
-    <div class="container"></div>
+<body id="body">
+    <h1 class="header" id="header">Etch-A-Sketch</h1>
+    <main class="main">
+        <div class="settings">
+            <div class="range-div" id="rangeDiv"></div>
+            <input class="grid-size" type="range" id="gridSize" min="8" max="60" value="10"/>
+            <button class="grid-buttons" id="gridButton">Enter Grid Size</button>
+            <button class="grid-buttons" id="clearButton">Clear Grid</button>
+        </div>
+        <div class="container" id="container"></div>
+    </main>
+    <footer class="footer" id="footer">
+        <a class="footer-ref" href="http://x.com/theScriptNerd" target="_blank" rel="noopener noreferrer">Okey</a>
+        <span>&copy;2023</span>
+    </footer>
 </body>
 </html>

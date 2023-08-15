@@ -1,19 +1,48 @@
-const container = document.querySelector('.container');
+const runGame = (function(){
+    const body = document.getElementById(`body`);
+    const container = document.getElementById(`container`);
+    const button = document.getElementById(`gridButton`);
+    const clear = document.getElementById(`clearButton`);
+    const gridSize = document.getElementById(`gridSize`);
+    const rangeDiv = document.getElementById(`rangeDiv`);
 
-const numOfDivs = () => {
-    return parseInt(prompt('How much grid do you need? 8 x 8 , 16 x 16, 32 x 32 & 64 x 64 is what is needed'))
-}
-const num = numOfDivs();
+    gridSize.addEventListener('mousemove', createDivs);
+    clear.addEventListener('click', clearGrid);
 
-function createDivs(){
-    container.style.gridTemplateColumns = `repeat(${num},1fr)`;
-    container.style.gridTemplateRows = `repeat(${num},1fr)`;
-
-    for(i = 0; i < num * num; i++){
-        const div = document.createElement('div');
-        div.classList.add(`div`);
-        container.appendChild(div);
+    const getGridSize = () => {
+        return griddy = parseInt(gridSize.value);
     }
-}
-console.log(container);
-createDivs()
+    function setRangeDiv(){
+        const griddy = getGridSize();
+        return rangeDiv.innerHTML = `${griddy} x ${griddy}`;
+    }
+
+    function addCSS(e){
+        e.target = e.target.classList.add(`hover-stick`);
+    }
+    function removeCSS(e){
+        e.target = e.target.classList.remove(`hover`);
+    }
+    function clearGrid(){
+        container.innerHTML = ``;
+    }
+    function createDivs(e){
+        clearGrid();
+        setRangeDiv();
+        const num = getGridSize();
+        container.style.gridTemplateColumns = `repeat(${num},1fr)`;
+        container.style.gridTemplateRows = `repeat(${num},1fr)`;
+    
+        for(i = 0; i < (num * num); i++){
+            const divs = document.createElement('div');
+            divs.classList.add(`div`);
+            divs.addEventListener('mousedown', addCSS);
+            container.appendChild(divs);
+        }
+    }
+    console.log(container);
+    window.onload = () => {
+        setRangeDiv();
+        createDivs();
+    };
+})()
