@@ -1,12 +1,29 @@
 const runGame = (function(){
-    const body = document.getElementById(`body`);
     const container = document.getElementById(`container`);
     const button = document.getElementById(`gridButton`);
     const clear = document.getElementById(`clearButton`);
     const gridSize = document.getElementById(`gridSize`);
     const rangeDiv = document.getElementById(`rangeDiv`);
+    let isMouseDown = false;
 
-    gridSize.addEventListener('mousemove', createDivs);
+    container.addEventListener('mousedown', () => {
+        isMouseDown = true;
+    });
+    container.addEventListener('mouseup', () => {
+        isMouseDown = false;
+    });
+    container.addEventListener('mouseleave', () => {
+        isMouseDown = false;
+    })
+    gridSize.addEventListener('mousedown', () => {
+        isMouseDown = true;
+    })
+    gridSize.addEventListener('mouseup', () => {
+        isMouseDown = false;
+    })
+      
+    container.addEventListener('mouseover', addCSS);
+    gridSize.addEventListener('mousemove', setUpGrid);
     clear.addEventListener('click', clearGrid);
 
     const getGridSize = () => {
@@ -16,30 +33,32 @@ const runGame = (function(){
         const griddy = getGridSize();
         return rangeDiv.innerHTML = `${griddy} x ${griddy}`;
     }
-
-    function addCSS(e){
-        e.target = e.target.classList.add(`hover-stick`);
+    function setUpGrid(e){
+        if(isMouseDown){
+            setRangeDiv();
+            createDivs();
+        }
     }
-    function removeCSS(e){
-        e.target = e.target.classList.remove(`hover`);
+    function addCSS(e) {
+        if (isMouseDown) {
+            e.target.classList.add(`hover-stick`);
+        }
     }
     function clearGrid(){
         container.innerHTML = ``;
     }
-    function createDivs(e){
+    function createDivs(){
         clearGrid();
-        setRangeDiv();
         const num = getGridSize();
         container.style.gridTemplateColumns = `repeat(${num},1fr)`;
         container.style.gridTemplateRows = `repeat(${num},1fr)`;
-    
         for(i = 0; i < (num * num); i++){
             const divs = document.createElement('div');
             divs.classList.add(`div`);
-            divs.addEventListener('mousedown', addCSS);
             container.appendChild(divs);
         }
     }
+
     console.log(container);
     window.onload = () => {
         setRangeDiv();
