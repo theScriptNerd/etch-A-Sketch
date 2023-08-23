@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="index.js" defer></script>
     <title>Etch A Sketch</title>
 </head>
-<body id="body">
-    <h1 class="header" id="header">Etch-A-Sketch</h1>
+<body>
+    <header class="header">
+        <h1 class="title">Etch-A-Sketch</h1>
+    </header>
     <main class="main">
         <div class="settings">
-            <div class="range-div" id="rangeDiv"></div>
-            <input class="grid-size" type="range" id="gridSize" min="8" max="60" value="10"/>
-            <button class="grid-buttons" id="gridButton">Enter Grid Size</button>
-            <button class="grid-buttons" id="clearButton">Clear Grid</button>
+            <input type="color" id="colorPicker" value="#333333">
+            <button id="colorBtn">Color</button>
+            <button id="rainbowBtn">Rainbow</button>
+            <button id="eraserBtn">Eraser</button>
+            <button id="clearBtn">Clear</button>
+            <div class="range-div" id="rangeDiv">16 x 16</div>
+            <input class="grid-size" type="range" id="gridSize" min="4" max="60" value="16"/>
         </div>
         <div class="container" id="container"></div>
     </main>
     <footer class="footer" id="footer">
-        <a class="footer-ref" href="http://x.com/theScriptNerd" target="_blank" rel="noopener noreferrer">Okey</a>
-        <span>&copy;2023</span>
+        Built by
+        <a class="footer-ref" href="http://x.com/theScriptNerd" target="_blank" rel="noopener noreferrer">Okechukwu</a>
+        <span>&copy; 2023</span>
     </footer>
 </body>
 </html>
